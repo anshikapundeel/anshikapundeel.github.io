@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anshika Pundeel – Performance Engineering</title>
+<meta name="description" content="On-demand performance engineering for SaaS, enterprise, and hybrid systems. IBM and OpenText experience.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:      #0a0a0f;
+  --ink2:     #1e1e2e;
+  --body:     #3a3a52;
+  --muted:    #7a7a96;
+  --rule:     #e4e4ef;
+  --bg:       #ffffff;
+  --bg2:      #f7f7fc;
+  --blue:     #0066ff;
+  --blue-dim: #e8f0ff;
+  --green:    #00875a;
+  --green-dim:#e3f5ee;
+  --red:      #cc2200;
+  --amber:    #b45309;
+  --mono:     'IBM Plex Mono', monospace;
+  --sans:     'Figtree', sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 28px;max-width:1080px;margin:0 auto}
+.nav-brand{font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.04em;color:var(--ink)}
+.nav-brand b{color:var(--blue)}
+.nav-links{display:flex;align-items:center;gap:6px;list-style:none}
+.nav-links a{font-size:13px;font-weight:500;color:var(--body);padding:6px 12px;border-radius:6px;transition:color .2s,background .2s}
+.nav-links a:hover{color:var(--ink);background:var(--bg2)}
+.nav-pill{background:var(--blue)!important;color:#fff!important;border-radius:6px;font-weight:600!important}
+.nav-pill:hover{background:#004ecc!important}
+@media(max-width:640px){.nav-links{display:none}}
+
+/* HERO */
+.hero{padding:96px 0 80px;border-bottom:1px solid var(--rule);background:radial-gradient(ellipse 60% 50% at 70% 0%,rgba(0,102,255,.06) 0%,transparent 60%),var(--bg)}
+.hero-grid{display:grid;grid-template-columns:1fr 320px;gap:64px;align-items:center}
+@media(max-width:780px){.hero-grid{grid-template-columns:1fr}.hero-sidebar{display:none}}
+
+.avail-tag{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--green);background:var(--green-dim);border:1px solid rgba(0,135,90,.2);padding:5px 12px;border-radius:100px;margin-bottom:28px}
+.avail-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.85)}}
+
+.hero-h1{font-size:clamp(36px,5.5vw,64px);font-weight:900;line-height:1.05;letter-spacing:-.03em;color:var(--ink);margin-bottom:22px}
+.hero-h1 .accent{color:var(--blue)}
+.hero-lead{font-size:17px;font-weight:400;line-height:1.75;color:var(--body);max-width:520px;margin-bottom:36px}
+.hero-lead strong{color:var(--ink);font-weight:600}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-weight:600;font-size:14px;padding:13px 24px;border-radius:8px;transition:all .2s;cursor:pointer;border:none;letter-spacing:-.01em}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-blue:hover{background:#004ecc;transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,102,255,.25)}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--rule)}
+.btn-ghost:hover{border-color:var(--ink2);background:var(--bg2)}
+
+/* Result card */
+.result-card{border:1.5px solid var(--rule);border-radius:12px;overflow:hidden;background:var(--bg);box-shadow:0 2px 20px rgba(0,0,0,.06)}
+.rc-head{padding:14px 18px;border-bottom:1px solid var(--rule);background:var(--bg2);display:flex;align-items:center;justify-content:space-between}
+.rc-head-label{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.rc-live{display:flex;align-items:center;gap:5px;font-family:var(--mono);font-size:10px;color:var(--green)}
+.rc-live::before{content:'';display:block;width:5px;height:5px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+.rc-row{display:flex;align-items:center;justify-content:space-between;padding:13px 18px;border-bottom:1px solid var(--rule);gap:12px}
+.rc-row:last-child{border-bottom:none}
+.rc-key{font-size:13px;color:var(--body)}
+.rc-val{font-family:var(--mono);font-size:13px;font-weight:600;text-align:right}
+.rc-val.g{color:var(--green)}.rc-val.b{color:var(--blue)}.rc-val.a{color:var(--amber)}
+
+/* TRUST */
+.trust{border-bottom:1px solid var(--rule);background:var(--bg2);padding:18px 0}
+.trust-inner{display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap}
+.trust-label{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.trust-logos{display:flex;align-items:center;gap:20px}
+.trust-co{font-family:var(--mono);font-size:14px;font-weight:700;color:var(--ink2);letter-spacing:.04em;opacity:.7;transition:opacity .2s}
+.trust-co:hover{opacity:1}
+.trust-div{color:var(--rule);font-weight:300;font-size:18px}
+
+/* TICKER */
+.ticker{overflow:hidden;border-bottom:1px solid var(--rule);padding:11px 0;background:var(--bg)}
+.ticker-track{display:flex;animation:scroll 28s linear infinite;width:max-content}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ticker-item{display:flex;align-items:center;gap:10px;padding:0 28px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);white-space:nowrap;border-right:1px solid var(--rule)}
+.ticker-item span{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--blue);flex-shrink:0}
+
+/* SECTION CHROME */
+.section{padding:80px 0;border-bottom:1px solid var(--rule)}
+.section-alt{background:var(--bg2)}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:14px}
+.eyebrow::before{content:'';display:block;width:20px;height:2px;background:var(--blue)}
+.section-h2{font-size:clamp(24px,3.5vw,38px);font-weight:800;letter-spacing:-.025em;color:var(--ink);line-height:1.1;margin-bottom:14px}
+.section-sub{font-size:16px;color:var(--body);max-width:540px;line-height:1.7;margin-bottom:52px}
+
+/* WIDGET */
+.widget-wrap{border:1.5px solid var(--rule);border-radius:12px;overflow:hidden;max-width:820px;margin:0 auto;box-shadow:0 4px 32px rgba(0,0,0,.07)}
+.widget-topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;background:var(--bg2);border-bottom:1px solid var(--rule)}
+.wt-left{display:flex;gap:7px}
+.wt-dot{width:11px;height:11px;border-radius:50%}
+.wt-dot:nth-child(1){background:#ff5f57}.wt-dot:nth-child(2){background:#febc2e}.wt-dot:nth-child(3){background:#28c840}
+.wt-title{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+.wt-company{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--ink);letter-spacing:.06em;transition:all .4s}
+.widget-metrics{display:grid;grid-template-columns:repeat(3,1fr);background:var(--bg)}
+.wm-cell{padding:28px 24px;border-right:1px solid var(--rule);transition:background .5s}
+.wm-cell:last-child{border-right:none}
+.wm-label{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.wm-val{font-family:var(--mono);font-size:26px;font-weight:700;color:var(--ink);letter-spacing:-.02em;transition:color .5s}
+.wm-val.bad{color:var(--red)}.wm-val.good{color:var(--green)}.wm-val.gold{color:var(--amber)}
+.wm-cell.bad-bg{background:rgba(204,34,0,.03)}.wm-cell.good-bg{background:rgba(0,135,90,.04)}.wm-cell.gold-bg{background:rgba(180,83,9,.03)}
+.widget-footer{padding:14px 22px;background:var(--bg2);border-top:1px solid var(--rule);display:flex;align-items:center;gap:16px}
+.wf-bar{flex:1;height:3px;background:var(--rule);border-radius:2px;overflow:hidden}
+.wf-fill{height:100%;width:5%;background:var(--red);border-radius:2px;transition:width 1.8s cubic-bezier(.22,1,.36,1),background .5s}
+.wf-status{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);min-width:170px;text-align:right;transition:color .4s}
+@media(max-width:560px){.widget-metrics{grid-template-columns:1fr}.wm-cell{border-right:none;border-bottom:1px solid var(--rule)}}
+
+/* PROBLEM CARDS */
+.prb-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media(max-width:640px){.prb-grid{grid-template-columns:1fr}}
+.prb-card{background:var(--bg);border:1.5px solid var(--rule);border-radius:10px;padding:28px;transition:border-color .25s,box-shadow .25s,transform .25s;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.prb-card:hover{border-color:var(--blue);box-shadow:0 8px 28px rgba(0,102,255,.1);transform:translateY(-2px)}
+.prb-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--blue);transform:scaleX(0);transform-origin:left;transition:transform .35s}
+.prb-card:hover::before{transform:scaleX(1)}
+.prb-icon{font-size:28px;margin-bottom:14px}
+.prb-card h3{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:8px;letter-spacing:-.01em}
+.prb-card p{font-size:14px;color:var(--body);line-height:1.7;margin-bottom:14px}
+.prb-tag{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);background:var(--blue-dim);padding:3px 8px;border-radius:4px;display:inline-block;margin-top:auto;align-self:flex-start}
+/* BENTO */
+.bento{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:680px){.bento{grid-template-columns:1fr}}
+.bento-card{background:var(--bg);border:1.5px solid var(--rule);border-radius:10px;padding:28px;transition:border-color .25s,box-shadow .25s}
+.bento-card:hover{border-color:rgba(0,102,255,.35);box-shadow:0 4px 20px rgba(0,102,255,.07)}
+.bento-card.wide{grid-column:span 2;display:flex;gap:28px}
+@media(max-width:680px){.bento-card.wide{grid-column:span 1;flex-direction:column}}
+.bento-num{font-family:var(--mono);font-size:48px;font-weight:700;color:var(--rule);line-height:1;margin-bottom:14px;transition:color .3s;letter-spacing:-.03em}
+.bento-card:hover .bento-num{color:var(--blue-dim)}
+.bento-card h3{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:7px;letter-spacing:-.01em}
+.bento-card p{font-size:13px;color:var(--body);line-height:1.7}
+.chip-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.chip{font-family:var(--mono);font-size:11px;font-weight:500;padding:3px 9px;border-radius:4px}
+.chip.up{background:var(--green-dim);color:var(--green)}.chip.down{background:var(--blue-dim);color:var(--blue)}
+
+/* CREDIBILITY */
+.cred-box{background:var(--bg);border:1.5px solid var(--rule);border-radius:12px;overflow:hidden;box-shadow:0 2px 20px rgba(0,0,0,.05)}
+.cred-head{padding:32px 36px;border-bottom:1px solid var(--rule)}
+.cred-head h3{font-size:20px;font-weight:800;color:var(--ink);letter-spacing:-.02em;margin-bottom:8px}
+.cred-head p{font-size:14px;color:var(--body);line-height:1.7;max-width:560px}
+.tech-strip{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:20px 36px;border-bottom:1px solid var(--rule);background:var(--bg2)}
+.tech-pre{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-right:4px}
+.t-chip{font-family:var(--mono);font-size:11px;padding:4px 9px;border-radius:5px;background:var(--bg);border:1px solid var(--rule);color:var(--ink2);transition:all .2s;cursor:default}
+.t-chip:hover{background:var(--blue-dim);border-color:rgba(0,102,255,.25);color:var(--blue)}
+.t-chip.soft{border-style:dashed;color:var(--muted)}
+.t-chip.soft:hover{background:var(--blue-dim);color:var(--blue);border-style:solid}
+.check-box{display:grid;grid-template-columns:1fr 1fr;gap:0;padding:8px 36px 24px;border-bottom:1px solid var(--rule)}
+@media(max-width:560px){.check-box{grid-template-columns:1fr}}
+.check-item{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--body);padding:10px 0}
+.check-item::before{content:'✓';color:var(--green);font-weight:700;font-size:13px;flex-shrink:0;margin-top:2px}
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+@media(max-width:640px){.process-grid{grid-template-columns:1fr 1fr}}
+.proc-step{padding:24px 22px;border-right:1px solid var(--rule)}
+.proc-step:last-child{border-right:none}
+.proc-n{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--blue);letter-spacing:.06em;margin-bottom:8px}
+.proc-step h4{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:5px}
+.proc-step p{font-size:12px;color:var(--body);line-height:1.6}
+.cred-foot{padding:14px 36px;background:var(--bg2);font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.04em}
+
+/* IDENTITY */
+.identity-grid{display:grid;grid-template-columns:1fr 280px;gap:60px;align-items:start}
+@media(max-width:720px){.identity-grid{grid-template-columns:1fr}.id-card{display:none}}
+.identity-quote{font-size:18px;font-style:italic;font-weight:500;color:var(--ink);line-height:1.7;border-left:3px solid var(--blue);padding-left:20px;margin-bottom:22px}
+.identity-p{font-size:15px;color:var(--body);line-height:1.8;margin-bottom:18px}
+.identity-p strong{color:var(--ink);font-weight:600}
+.id-card{border:1.5px solid var(--rule);border-radius:12px;overflow:hidden;box-shadow:0 2px 20px rgba(0,0,0,.06)}
+.id-avatar{height:160px;background:linear-gradient(135deg,var(--blue) 0%,#6d28d9 100%);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:52px;font-weight:700;color:rgba(255,255,255,.85);letter-spacing:.05em;user-select:none}
+.id-details{padding:18px;background:var(--bg)}
+.id-name{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:3px}
+.id-role{font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:14px;letter-spacing:.04em}
+.id-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-top:1px solid var(--rule);font-size:12px}
+.id-row-k{color:var(--body)}
+.id-row-v{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--blue)}
+.id-row-v.g{color:var(--green)}
+
+/* PRICING */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:700px){.pricing-grid{grid-template-columns:1fr}}
+.price-card{border:1.5px solid var(--rule);border-radius:12px;padding:30px 24px;background:var(--bg);display:flex;flex-direction:column;transition:all .25s}
+.price-card:hover{border-color:var(--blue);box-shadow:0 8px 28px rgba(0,102,255,.1)}
+.price-card.star{border-color:var(--blue);background:linear-gradient(160deg,#f0f6ff 0%,var(--bg) 60%);box-shadow:0 4px 24px rgba(0,102,255,.12)}
+.price-badge{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:14px}
+.price-badge.rec{color:var(--green)}
+.price-card h3{font-size:17px;font-weight:800;color:var(--ink);margin-bottom:8px;letter-spacing:-.01em}
+.price-card>p{font-size:13px;color:var(--body);line-height:1.7;margin-bottom:20px}
+.price-list{list-style:none;margin-bottom:28px;flex:1}
+.price-list li{font-size:13px;color:var(--body);padding:8px 0;border-bottom:1px solid var(--rule);display:flex;align-items:flex-start;gap:8px}
+.price-list li:last-child{border-bottom:none}
+.price-list li::before{content:'→';color:var(--blue);font-size:12px;flex-shrink:0;margin-top:1px}
+.price-list li strong{color:var(--ink)}
+.price-btn{display:block;text-align:center;padding:12px;border-radius:7px;font-family:var(--sans);font-size:13px;font-weight:700;transition:all .2s;letter-spacing:-.01em}
+.price-btn-blue{background:var(--blue);color:#fff}
+.price-btn-blue:hover{background:#004ecc;box-shadow:0 6px 20px rgba(0,102,255,.3)}
+.price-btn-outline{border:1.5px solid var(--rule);color:var(--ink2)}
+.price-btn-outline:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-dim)}
+.secure{text-align:center;margin-top:28px;font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.06em}
+
+/* FOOTER */
+.footer{border-top:1px solid var(--rule);padding:28px 0;background:var(--bg2)}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+.footer-copy{font-size:13px;color:var(--muted)}
+.footer-links{display:flex;gap:20px}
+.footer-links a{font-size:13px;color:var(--muted);transition:color .2s}
+.footer-links a:hover{color:var(--blue)}
+
+/* FADE */
+.fade{opacity:0;transform:translateY(18px);animation:fadeUp .7s ease forwards}
+.fade.d1{animation-delay:.1s}.fade.d2{animation-delay:.2s}.fade.d3{animation-delay:.3s}.fade.d4{animation-delay:.4s}.fade.d5{animation-delay:.5s}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">AP<b>.</b>PERFENG</div>
+    <ul class="nav-links">
+      <li><a href="#problems">Problems</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="case-studies.html">Case Studies</a></li>
+      <li><a href="#contact" class="nav-pill">Work Together</a></li>
+    </ul>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="avail-tag fade d1"><span class="avail-dot"></span>Available for engagements</div>
+        <h1 class="hero-h1 fade d2">Your system is slow.<br>I'll tell you <span class="accent">exactly why.</span></h1>
+        <p class="hero-lead fade d3">On-demand performance engineering across the full stack — <strong>JVM internals, Kubernetes pods, PostgreSQL query plans, Linux kernel.</strong> I fix root causes. Not symptoms.</p>
+        <div class="hero-ctas fade d4">
+          <a href="#contact" class="btn btn-blue">→ Start an Audit</a>
+          <a href="case-studies.html" class="btn btn-ghost">View Case Studies</a>
+        </div>
+      </div>
+      <div class="hero-sidebar fade d5">
+        <div class="result-card">
+          <div class="rc-head"><span class="rc-head-label">Recent Results</span><span class="rc-live">Verified</span></div>
+          <div class="rc-row"><span class="rc-key">Transaction latency</span><span class="rc-val g">↓ 80%</span></div>
+          <div class="rc-row"><span class="rc-key">System throughput</span><span class="rc-val g">↑ 50%</span></div>
+          <div class="rc-row"><span class="rc-key">Infra cost avoided</span><span class="rc-val b">Scale-up cancelled</span></div>
+          <div class="rc-row"><span class="rc-key">Uptime certified</span><span class="rc-val a">99.9%</span></div>
+          <div class="rc-row"><span class="rc-key">Production disruption</span><span class="rc-val g">Zero</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trust">
+  <div class="trust-inner">
+    <span class="trust-label">End-to-end optimization delivered at</span>
+    <div class="trust-logos">
+      <span class="trust-co">IBM</span><span class="trust-div">/</span><span class="trust-co">OpenText</span>
+    </div>
+  </div>
+</div>
+
+<div class="ticker">
+  <div class="ticker-track">
+    <div class="ticker-item"><span></span>KVM Hypervisor Optimization</div>
+    <div class="ticker-item"><span></span>JVM Thread &amp; Mutex Analysis</div>
+    <div class="ticker-item"><span></span>PostgreSQL Query Tuning</div>
+    <div class="ticker-item"><span></span>Linux Kernel Tuning</div>
+    <div class="ticker-item"><span></span>Kubernetes Pod Performance</div>
+    <div class="ticker-item"><span></span>Java Heap &amp; GC Profiling</div>
+    <div class="ticker-item"><span></span>Root Cause Analysis</div>
+    <div class="ticker-item"><span></span>NUMA Topology Alignment</div>
+    <div class="ticker-item"><span></span>API Latency Profiling</div>
+    <div class="ticker-item"><span></span>Connection Pool Optimization</div>
+    <div class="ticker-item"><span></span>KVM Hypervisor Optimization</div>
+    <div class="ticker-item"><span></span>JVM Thread &amp; Mutex Analysis</div>
+    <div class="ticker-item"><span></span>PostgreSQL Query Tuning</div>
+    <div class="ticker-item"><span></span>Linux Kernel Tuning</div>
+    <div class="ticker-item"><span></span>Kubernetes Pod Performance</div>
+    <div class="ticker-item"><span></span>Java Heap &amp; GC Profiling</div>
+    <div class="ticker-item"><span></span>Root Cause Analysis</div>
+    <div class="ticker-item"><span></span>NUMA Topology Alignment</div>
+    <div class="ticker-item"><span></span>API Latency Profiling</div>
+    <div class="ticker-item"><span></span>Connection Pool Optimization</div>
+  </div>
+</div>
+
+<section class="section section-alt">
+  <div class="wrap">
+    <div class="eyebrow">The cost of doing nothing</div>
+    <h2 class="section-h2">Hidden latency kills growth.</h2>
+    <p class="section-sub">Real scenarios showing what happens before — and after — root cause is found and fixed.</p>
+    <div class="widget-wrap">
+      <div class="widget-topbar">
+        <div class="wt-left"><div class="wt-dot"></div><div class="wt-dot"></div><div class="wt-dot"></div></div>
+        <span class="wt-title">Case Study Simulation</span>
+        <span class="wt-company" id="wt-co">LOADING...</span>
+      </div>
+      <div class="widget-metrics">
+        <div class="wm-cell" id="mc-lat"><div class="wm-label">App Latency</div><div class="wm-val" id="mv-lat">—</div></div>
+        <div class="wm-cell" id="mc-cost"><div class="wm-label">Infra Cost</div><div class="wm-val" id="mv-cost">—</div></div>
+        <div class="wm-cell" id="mc-rev"><div class="wm-label">Revenue / Growth</div><div class="wm-val" id="mv-rev">—</div></div>
+      </div>
+      <div class="widget-footer">
+        <div class="wf-bar"><div class="wf-fill" id="wf-fill"></div></div>
+        <div class="wf-status" id="wf-status">⚠ Detecting bottleneck</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="problems">
+  <div class="wrap">
+    <div class="eyebrow">Why systems fail under growth</div>
+    <h2 class="section-h2">Systems look stable — until they don't.</h2>
+    <p class="section-sub">Failures don't announce themselves in advance. They surface at the worst possible time, with the highest possible cost.</p>
+    <div class="prb-grid">
+      <div class="prb-card"><div class="prb-icon">⏱</div><h3>Latency Creep</h3><p>Response times degrade gradually. Without proper baselines, you won't notice until "slow" becomes "unacceptable" and users start leaving.</p><span class="prb-tag">Performance</span></div>
+      <div class="prb-card"><div class="prb-icon">🔒</div><h3>Database Locking</h3><p>Horizontal app scaling collides with DB connection limits and write contention, causing sudden and total system lockups under load.</p><span class="prb-tag">Architecture</span></div>
+      <div class="prb-card"><div class="prb-icon">⚠️</div><h3>The Staging Trap</h3><p>Staging environments rarely match production data volume. You are deploying code that has never been tested under real pressure.</p><span class="prb-tag">Process</span></div>
+      <div class="prb-card"><div class="prb-icon">💸</div><h3>Cloud Cost Waste</h3><p>Throwing larger instances at performance problems is a band-aid that kills margins and permanently hides the root cause.</p><span class="prb-tag">Financial</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="wrap">
+    <div class="eyebrow">Business outcomes</div>
+    <h2 class="section-h2">Engineering that moves numbers.</h2>
+    <p class="section-sub">Performance work isn't housekeeping. It directly affects margins, SLAs, and growth capacity.</p>
+    <div class="bento">
+      <div class="bento-card wide"><div><div class="bento-num">01</div><h3>Margin &amp; Cost Efficiency</h3><p>Directly improve gross margins by rightsizing infrastructure. Turn cloud waste into reinvestable capital without compromising reliability.</p><div class="chip-row"><span class="chip up">▲ Margin +15%</span><span class="chip down">▼ Waste −30%</span></div></div></div>
+      <div class="bento-card"><div class="bento-num">02</div><h3>SLA Protection</h3><p>Identify bottlenecks before they breach contracts or churn customers. Proactive, not reactive.</p></div>
+      <div class="bento-card"><div class="bento-num">03</div><h3>Predictable Scaling</h3><p>Decouple user growth from cost growth. Scale 10× without your cloud bill going 10×.</p></div>
+      <div class="bento-card"><div class="bento-num">04</div><h3>Faster Recovery</h3><p>Deep architectural visibility means faster root-cause diagnosis when production incidents occur.</p></div>
+      <div class="bento-card"><div class="bento-num">05</div><h3>Executive Clarity</h3><p>Data-driven trade-offs. Know exactly how much faster you get for how much spent — Jira-ready.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="process">
+  <div class="wrap">
+    <div class="eyebrow">How I work</div>
+    <h2 class="section-h2">Root cause or nothing.</h2>
+    <p class="section-sub">I don't surface metrics you already have. I find the layer where the actual problem lives and fix it there.</p>
+    <div class="cred-box">
+      <div class="cred-head">
+        <h3>Expert System Performance Analysis &amp; Optimization</h3>
+        <p>Identifying and fixing bottlenecks across application, database, and infrastructure layers in production systems. The tools support the analysis — they do not define it.</p>
+      </div>
+      <div class="tech-strip">
+        <span class="tech-pre">Core stack</span>
+        <span class="t-chip">Java / C++</span>
+        <span class="t-chip">JVM Internals</span>
+        <span class="t-chip">Linux Kernel</span>
+        <span class="t-chip">KVM / Hypervisors</span>
+        <span class="t-chip">PostgreSQL</span>
+        <span class="t-chip">Kubernetes</span>
+        <span class="t-chip">Distributed Tracing</span>
+        <span class="t-chip soft">eBPF / XDP *</span>
+      </div>
+      <div class="check-box">
+        <div class="check-item">System behaviour under load</div>
+        <div class="check-item">Linux and runtime-level performance</div>
+        <div class="check-item">Database and infrastructure interaction</div>
+        <div class="check-item">Root-cause analysis beyond surface metrics</div>
+      </div>
+      <div class="process-grid">
+        <div class="proc-step"><div class="proc-n">01 · Discovery</div><h4>Architecture Review</h4><p>Read-only access to monitoring logs and architecture docs. No production access required.</p></div>
+        <div class="proc-step"><div class="proc-n">02 · Analysis</div><h4>Bottleneck Identification</h4><p>Root causes in code, query plans, kernel config, and runtime — not just the dashboard.</p></div>
+        <div class="proc-step"><div class="proc-n">03 · Validation</div><h4>Load Test Verification</h4><p>Non-production load tests confirm findings before any changes touch production.</p></div>
+        <div class="proc-step"><div class="proc-n">04 · Roadmap</div><h4>Jira-Ready Output</h4><p>Prioritised, actionable fix list your team can start executing the same day.</p></div>
+      </div>
+      <div class="cred-foot">* eBPF/XDP — working familiarity, not production depth &nbsp;·&nbsp; 🔒 All work conducted securely and remotely</div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="about">
+  <div class="wrap">
+    <div class="eyebrow">Who I am</div>
+    <h2 class="section-h2">The engineer behind the work.</h2>
+    <div class="identity-grid">
+      <div>
+        <div class="identity-quote">"Dashboards show you the <em>what</em>. I work at the layer that explains the <em>why</em> — from the Kubernetes pod down to the kernel. That's where the real problems live."</div>
+        <p class="identity-p">I'm <strong>Anshika Pundeel</strong>, a performance engineer currently at IBM where I tune KVM on zServer mainframes — environments where a single kernel misconfiguration cascades across thousands of VMs. Before that at OpenText, I profiled and fixed Java applications running on Kubernetes in GCP — thread contention, mutex deadlocks, connection pool exhaustion, unaudited PostgreSQL query plans.</p>
+        <p class="identity-p"><strong>Most performance problems are misdiagnosed because engineers stop at the wrong layer.</strong> The application dashboard looks fine. The root cause is in the JVM scheduler, the NUMA topology, or a query plan nobody checked in two years. That's where I start.</p>
+        <a href="https://www.linkedin.com/in/anshika-pundeel/" target="_blank" class="btn" style="margin-top:8px;display:inline-flex;background:#0A66C2;color:#fff;gap:8px;"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg> LinkedIn Profile</a>
+      </div>
+      <div class="id-card">
+        <div class="id-avatar">AP</div>
+        <div class="id-details">
+          <div class="id-name">Anshika Pundeel</div>
+          <div class="id-role">Performance Engineer</div>
+          <div class="id-row"><span class="id-row-k">Current</span><span class="id-row-v">IBM · KVM / zServer</span></div>
+          <div class="id-row"><span class="id-row-k">Previous</span><span class="id-row-v">OpenText · Java / K8s</span></div>
+          <div class="id-row"><span class="id-row-k">Location</span><span class="id-row-v">Bangalore · Remote</span></div>
+          <div class="id-row"><span class="id-row-k">Status</span><span class="id-row-v g">Available</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="wrap">
+    <div class="eyebrow">Engagements</div>
+    <h2 class="section-h2">Validate before growth exposes risk.</h2>
+    <p class="section-sub">Choose the level that matches where your system is and what you need to know.</p>
+    <div style="border:1.5px solid rgba(0,102,255,.25);border-radius:12px;background:var(--blue-dim);padding:32px 36px;margin-bottom:28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px">
+  <div>
+    <div style="font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:8px">Free · No obligation</div>
+    <div style="font-size:20px;font-weight:800;color:var(--ink);letter-spacing:-.02em;margin-bottom:6px">30-Min Architecture Sanity Check</div>
+    <div style="font-size:14px;color:var(--body);max-width:480px;line-height:1.6">Not sure if you have a performance problem? I'll review what you share and tell you honestly if there's a real risk worth fixing. No pitch, no obligation.</div>
+  </div>
+  <a href="https://calendly.com/anshikapundeel/30min" target="_blank" class="btn btn-blue" style="white-space:nowrap;flex-shrink:0">→ Book Free Call</a>
+</div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-badge">Entry Point</div>
+        <h3>Quick Performance Review</h3>
+        <p>A focused review to surface visible risks and understand current performance quickly.</p>
+        <ul class="price-list">
+          <li>Initial Architecture Review</li>
+          <li>Visible Bottleneck Report</li>
+          <li>2-Hour Findings Call</li>
+        </ul>
+        <a href="mailto:anshikapundeel@gmail.com?subject=Quick Performance Check" class="price-btn price-btn-outline">Check Readiness →</a>
+      </div>
+      <div class="price-card star">
+        <div class="price-badge rec">Recommended</div>
+        <h3>Full Scalability Review</h3>
+        <p>Deep, engineering-led assessment of limits, risks, and SLA readiness. Most clients start here.</p>
+        <ul class="price-list">
+          <li><strong>Full Architecture Analysis</strong></li>
+          <li>Database &amp; Query Optimisation</li>
+          <li>Load Testing Validation</li>
+          <li>Jira-Ready Remediation Roadmap</li>
+        </ul>
+        <a href="mailto:anshikapundeel@gmail.com?subject=Full Scalability Review" class="price-btn price-btn-blue">Start Review →</a>
+      </div>
+      <div class="price-card">
+        <div class="price-badge">Advanced</div>
+        <h3>Custom Assessment</h3>
+        <p>For complex architectures, on-prem infra, mainframe environments, or regulatory constraints.</p>
+        <ul class="price-list">
+          <li>Multi-Region Availability</li>
+          <li>Custom Chaos Engineering</li>
+          <li>On-prem / Hybrid / KVM</li>
+          <li>Mainframe Environments</li>
+        </ul>
+        <a href="mailto:anshikapundeel@gmail.com?subject=Custom Assessment" class="price-btn price-btn-outline">Get in Touch →</a>
+      </div>
+    </div>
+    <p class="secure">🔒 All work conducted securely and remotely &nbsp;·&nbsp; No production disruption &nbsp;·&nbsp; Confidentiality maintained</p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-inner">
+      <span class="footer-copy">© 2026 Anshika Pundeel · Performance Engineering</span>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/anshika-pundeel/" target="_blank">LinkedIn</a>
+        <a href="case-studies.html">Case Studies</a>
+           <a href="index.html#about">About</a>
+        <a href="mailto:anshikapundeel@gmail.com">Email</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const cases=[
+  {name:"HIGH-TRAFFIC SAAS",    before:{lat:"1,840ms",cost:"Scaling up", rev:"Stagnant"}, after:{lat:"220ms",   cost:"Stable",   rev:"SLA met"  }},
+  {name:"FINTECH PLATFORM",     before:{lat:"Timeouts",cost:"Wasted",    rev:"Churn ↑" }, after:{lat:"Resolved",cost:"−30%",    rev:"Stable"   }},
+  {name:"ENTERPRISE INFRA",     before:{lat:"Spikes",  cost:"$$$",       rev:"Blocked" }, after:{lat:"Flat",    cost:"+30% VMs", rev:"Unlocked" }},
+  {name:"JAVA MICROSERVICES",   before:{lat:"GC Pause",cost:"High CPU",  rev:"Churn"   }, after:{lat:"Zero",    cost:"Low CPU",  rev:"Growth"   }}
+];
+let idx=0;
+const co=document.getElementById('wt-co');
+const vL=document.getElementById('mv-lat'),vC=document.getElementById('mv-cost'),vR=document.getElementById('mv-rev');
+const mL=document.getElementById('mc-lat'),mC=document.getElementById('mc-cost'),mR=document.getElementById('mc-rev');
+const fill=document.getElementById('wf-fill'),stat=document.getElementById('wf-status');
+function setCell(el,mEl,val,cls){el.textContent=val;el.className='wm-val '+cls;mEl.className='wm-cell '+(cls==='bad'?'bad-bg':cls==='gold'?'gold-bg':'good-bg')}
+function run(){
+  const d=cases[idx];co.textContent=d.name;
+  setCell(vL,mL,d.before.lat,'bad');setCell(vC,mC,d.before.cost,'bad');setCell(vR,mR,d.before.rev,'bad');
+  fill.style.width='6%';fill.style.background='#cc2200';
+  stat.textContent='⚠ Detecting bottleneck';stat.style.color='#cc2200';
+  setTimeout(()=>{
+    setCell(vL,mL,d.after.lat,'good');setCell(vC,mC,d.after.cost,'good');setCell(vR,mR,d.after.rev,'gold');
+    fill.style.width='100%';fill.style.background='#00875a';
+    stat.textContent='✓ Root cause fixed';stat.style.color='#00875a';
+  },2200);
+  idx=(idx+1)%cases.length;
+}
+run();setInterval(run,5500);
+</script>
+</body>
+</html>
