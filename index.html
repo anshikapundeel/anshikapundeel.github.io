@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Anshika Pundeel – Performance Engineering</title>
-<meta name="description" content="On-demand performance engineering for SaaS, enterprise, and hybrid systems. IBM and OpenText experience.">
+<meta name="description" content="Anshika Pundeel is a systems, infrastructure, distributed systems and performance engineer at Salesforce.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -228,13 +228,13 @@ a{color:inherit;text-decoration:none}
 
 <header class="nav">
   <div class="nav-inner">
-    <div class="nav-brand">AP<b>.</b>PERFENG</div>
+    <div class="nav-brand">AP <b>.</b> Perf Engine</div>
     <ul class="nav-links">
-      <li><a href="#problems">Problems</a></li>
-      <li><a href="#process">Process</a></li>
+      <li><a href="#problems">Expertise</a></li>
+      <li><a href="#process">Engineering Notes</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="case-studies.html">Case Studies</a></li>
-      <li><a href="#contact" class="nav-pill">Work Together</a></li>
+      <li><a href="#contact" class="nav-pill">Contact</a></li>
     </ul>
   </div>
 </header>
@@ -243,22 +243,22 @@ a{color:inherit;text-decoration:none}
   <div class="wrap">
     <div class="hero-grid">
       <div>
-        <div class="avail-tag fade d1"><span class="avail-dot"></span>Available for engagements</div>
-        <h1 class="hero-h1 fade d2">Your system is slow.<br>I'll tell you <span class="accent">exactly why.</span></h1>
-        <p class="hero-lead fade d3">On-demand performance engineering across the full stack — <strong>JVM internals, Kubernetes pods, PostgreSQL query plans, Linux kernel.</strong> I fix root causes. Not symptoms.</p>
+        <div class="avail-tag fade d1"><span class="avail-dot"></span>Performance Engineer at Salesforce</div>
+        <h1 class="hero-h1 fade d2">Systems &amp; Infrastructure<br><span class="accent">Performance Engineer</span></h1>
+        <p class="hero-lead fade d3"><strong>Anshika Pundeel</strong> · 5 years of software engineering experience focused on performance engineering, infrastructure and distributed systems.</p>
         <div class="hero-ctas fade d4">
-          <a href="#contact" class="btn btn-blue">→ Start an Audit</a>
+          <a href="#contact" class="btn btn-blue">Get in Touch</a>
           <a href="case-studies.html" class="btn btn-ghost">View Case Studies</a>
         </div>
       </div>
       <div class="hero-sidebar fade d5">
         <div class="result-card">
-          <div class="rc-head"><span class="rc-head-label">Recent Results</span><span class="rc-live">Verified</span></div>
-          <div class="rc-row"><span class="rc-key">Transaction latency</span><span class="rc-val g">↓ 80%</span></div>
-          <div class="rc-row"><span class="rc-key">System throughput</span><span class="rc-val g">↑ 50%</span></div>
-          <div class="rc-row"><span class="rc-key">Infra cost avoided</span><span class="rc-val b">Scale-up cancelled</span></div>
-          <div class="rc-row"><span class="rc-key">Uptime certified</span><span class="rc-val a">99.9%</span></div>
-          <div class="rc-row"><span class="rc-key">Production disruption</span><span class="rc-val g">Zero</span></div>
+          <div class="rc-head"><span class="rc-head-label">Engineering Focus</span><span class="rc-live">Portfolio</span></div>
+          <div class="rc-row"><span class="rc-key">Systems</span><span class="rc-val g">Linux / KVM</span></div>
+          <div class="rc-row"><span class="rc-key">Infrastructure</span><span class="rc-val g">Kubernetes</span></div>
+          <div class="rc-row"><span class="rc-key">Databases</span><span class="rc-val b">PostgreSQL</span></div>
+          <div class="rc-row"><span class="rc-key">Observability</span><span class="rc-val a">OpenTelemetry</span></div>
+          <div class="rc-row"><span class="rc-key">Model serving</span><span class="rc-val g">vLLM</span></div>
         </div>
       </div>
     </div>
@@ -267,9 +267,9 @@ a{color:inherit;text-decoration:none}
 
 <div class="trust">
   <div class="trust-inner">
-    <span class="trust-label">End-to-end optimization delivered at</span>
+    <span class="trust-label">Professional experience</span>
     <div class="trust-logos">
-      <span class="trust-co">IBM</span><span class="trust-div">/</span><span class="trust-co">OpenText</span>
+      <span class="trust-co">Salesforce</span><span class="trust-div">/</span><span class="trust-co">IBM ISDL</span><span class="trust-div">/</span><span class="trust-co">OpenText</span>
     </div>
   </div>
 </div>
@@ -301,77 +301,78 @@ a{color:inherit;text-decoration:none}
 
 <section class="section section-alt">
   <div class="wrap">
-    <div class="eyebrow">The cost of doing nothing</div>
-    <h2 class="section-h2">Hidden latency kills growth.</h2>
-    <p class="section-sub">Real scenarios showing what happens before — and after — root cause is found and fixed.</p>
+    <div class="eyebrow">Personal engineering case study</div>
+    <h2 class="section-h2">What happens when ClickHouse stops accepting writes?</h2>
+    <p class="section-sub">Two 18-second trials used the same 3,000-sample queue, two workers and an eight-retry limit. Blocking slowed the producer. Dropping new samples kept it running through the outage.</p>
     <div class="widget-wrap">
       <div class="widget-topbar">
         <div class="wt-left"><div class="wt-dot"></div><div class="wt-dot"></div><div class="wt-dot"></div></div>
-        <span class="wt-title">Case Study Simulation</span>
+        <span class="wt-title">TelemetryScale · ClickHouse outage</span>
         <span class="wt-company" id="wt-co">LOADING...</span>
       </div>
       <div class="widget-metrics">
-        <div class="wm-cell" id="mc-lat"><div class="wm-label">App Latency</div><div class="wm-val" id="mv-lat">—</div></div>
-        <div class="wm-cell" id="mc-cost"><div class="wm-label">Infra Cost</div><div class="wm-val" id="mv-cost">—</div></div>
-        <div class="wm-cell" id="mc-rev"><div class="wm-label">Revenue / Growth</div><div class="wm-val" id="mv-rev">—</div></div>
+        <div class="wm-cell" id="mc-lat"><div class="wm-label">Offered</div><div class="wm-val" id="mv-lat">—</div></div>
+        <div class="wm-cell" id="mc-cost"><div class="wm-label">Delivered</div><div class="wm-val" id="mv-cost">—</div></div>
+        <div class="wm-cell" id="mc-rev"><div class="wm-label">Dropped</div><div class="wm-val" id="mv-rev">—</div></div>
       </div>
       <div class="widget-footer">
         <div class="wf-bar"><div class="wf-fill" id="wf-fill"></div></div>
-        <div class="wf-status" id="wf-status">⚠ Detecting bottleneck</div>
+        <div class="wf-status" id="wf-status">Block policy</div>
       </div>
     </div>
   </div>
+  <div class="wrap"><p class="section-sub">Block delivered 18,238 of 22,640 offered samples (80.6%). DropNewest delivered 25,960 of 36,000 (72.1%). Both resumed delivery. The policy with the lower delivery fraction still delivered more samples because the producer kept offering work. For a source that can pause, the loss fraction matters. For a source that must keep sampling, count what it never got to offer as well.</p><p class="section-sub">These single-host trials show why the denominator matters. To compare policies at identical demand, the next experiment would replay the same timestamped input into both. <a href="https://github.com/anshikapundeel/telemetryscale/blob/main/bench/results/README.md">Read the experiment and reproduction steps</a>.</p></div>
 </section>
 
 <section class="section" id="problems">
   <div class="wrap">
-    <div class="eyebrow">Why systems fail under growth</div>
-    <h2 class="section-h2">Systems look stable — until they don't.</h2>
-    <p class="section-sub">Failures don't announce themselves in advance. They surface at the worst possible time, with the highest possible cost.</p>
+    <div class="eyebrow">Engineering expertise</div>
+    <h2 class="section-h2">From the Linux kernel to model serving</h2>
+    <p class="section-sub">C++, Go, Python and Java across systems, infrastructure and performance tooling.</p>
     <div class="prb-grid">
-      <div class="prb-card"><div class="prb-icon">⏱</div><h3>Latency Creep</h3><p>Response times degrade gradually. Without proper baselines, you won't notice until "slow" becomes "unacceptable" and users start leaving.</p><span class="prb-tag">Performance</span></div>
-      <div class="prb-card"><div class="prb-icon">🔒</div><h3>Database Locking</h3><p>Horizontal app scaling collides with DB connection limits and write contention, causing sudden and total system lockups under load.</p><span class="prb-tag">Architecture</span></div>
-      <div class="prb-card"><div class="prb-icon">⚠️</div><h3>The Staging Trap</h3><p>Staging environments rarely match production data volume. You are deploying code that has never been tested under real pressure.</p><span class="prb-tag">Process</span></div>
-      <div class="prb-card"><div class="prb-icon">💸</div><h3>Cloud Cost Waste</h3><p>Throwing larger instances at performance problems is a band-aid that kills margins and permanently hides the root cause.</p><span class="prb-tag">Financial</span></div>
+      <div class="prb-card"><div class="prb-icon">⏱</div><h3>Systems &amp; virtualization</h3><p>Linux, KVM, NUMA, concurrency and JVM profiling. Measure CPU, memory and scheduling behavior under representative workloads.</p><span class="prb-tag">Systems</span></div>
+      <div class="prb-card"><div class="prb-icon">🔒</div><h3>Data &amp; distributed systems</h3><p>PostgreSQL, MySQL, ClickHouse and Redis. Investigate contention and query plans, and reason about replication, sharding, messaging and backpressure.</p><span class="prb-tag">Data</span></div>
+      <div class="prb-card"><div class="prb-icon">⚠️</div><h3>Cloud infrastructure</h3><p>Kubernetes, OpenShift, Docker, Helm and CI/CD. Pair capacity and reliability work with Prometheus, Grafana, Mimir and OpenTelemetry.</p><span class="prb-tag">Infrastructure</span></div>
+      <div class="prb-card"><div class="prb-icon">💸</div><h3>Performance &amp; AI infrastructure</h3><p>Benchmark latency and throughput, identify regressions and characterize workloads. Technical exploration includes vLLM inference and model serving.</p><span class="prb-tag">Performance</span></div>
     </div>
   </div>
 </section>
 
 <section class="section section-alt">
   <div class="wrap">
-    <div class="eyebrow">Business outcomes</div>
-    <h2 class="section-h2">Engineering that moves numbers.</h2>
-    <p class="section-sub">Performance work isn't housekeeping. It directly affects margins, SLAs, and growth capacity.</p>
+    <div class="eyebrow">Featured projects</div>
+    <h2 class="section-h2">Systems built to be measured</h2>
+    <p class="section-sub">Personal engineering projects with source code, design decisions and reproducible experiments.</p>
     <div class="bento">
-      <div class="bento-card wide"><div><div class="bento-num">01</div><h3>Margin &amp; Cost Efficiency</h3><p>Directly improve gross margins by rightsizing infrastructure. Turn cloud waste into reinvestable capital without compromising reliability.</p><div class="chip-row"><span class="chip up">▲ Margin +15%</span><span class="chip down">▼ Waste −30%</span></div></div></div>
-      <div class="bento-card"><div class="bento-num">02</div><h3>SLA Protection</h3><p>Identify bottlenecks before they breach contracts or churn customers. Proactive, not reactive.</p></div>
-      <div class="bento-card"><div class="bento-num">03</div><h3>Predictable Scaling</h3><p>Decouple user growth from cost growth. Scale 10× without your cloud bill going 10×.</p></div>
-      <div class="bento-card"><div class="bento-num">04</div><h3>Faster Recovery</h3><p>Deep architectural visibility means faster root-cause diagnosis when production incidents occur.</p></div>
-      <div class="bento-card"><div class="bento-num">05</div><h3>Executive Clarity</h3><p>Data-driven trade-offs. Know exactly how much faster you get for how much spent — Jira-ready.</p></div>
+      <div class="bento-card wide"><div><div class="bento-num">01</div><h3><a href="https://github.com/anshikapundeel/telemetryscale">TelemetryScale</a></h3><p>Go telemetry ingestion with bounded queues, batching and retry. In a 10-second single-host ClickHouse trial, a 200 ms flush interval delivered 14,955 samples/s. During an induced outage, blocking slowed producers while dropping new samples preserved the offered rate at the cost of more lost samples.</p><div class="chip-row"><span class="chip up">Mimir / ClickHouse</span><span class="chip down">Bounded ingest</span></div></div></div>
+      <div class="bento-card"><div class="bento-num">02</div><h3><a href="incident-pilot.html">Incident Pilot</a></h3><p>Correlates alerts with deploys, logs and traces using deterministic rules. Optional LLM output rephrases the cited findings. <a href="https://github.com/anshikapundeel/incident-pilot">Source code</a>.</p></div>
+      <div class="bento-card"><div class="bento-num">03</div><h3><a href="https://github.com/anshikapundeel/flow-trace">Flow Trace</a></h3><p>OTLP/HTTP JSON trace collector with a sharded ring buffer. Memory stays bounded as older spans are overwritten.</p></div>
+      <div class="bento-card"><div class="bento-num">04</div><h3><a href="https://github.com/anshikapundeel/regression-radar">Regression Radar</a></h3><p>Python CI gate combining Mann–Whitney U and Cliff’s delta with separate percentile checks for tail regressions.</p></div>
+      <div class="bento-card"><div class="bento-num">05</div><h3><a href="https://github.com/anshikapundeel/redfish-exporter">Redfish Exporter</a></h3><p>Multi-target Prometheus exporter for BMC telemetry. A mock BMC and HTTP fixtures exercise collection without physical hardware.</p></div>
     </div>
   </div>
 </section>
 
 <section class="section" id="process">
   <div class="wrap">
-    <div class="eyebrow">How I work</div>
-    <h2 class="section-h2">Root cause or nothing.</h2>
-    <p class="section-sub">I don't surface metrics you already have. I find the layer where the actual problem lives and fix it there.</p>
+    <div class="eyebrow">Technical writing &amp; research</div>
+    <h2 class="section-h2">How the systems work</h2>
+    <p class="section-sub">Architecture notes, statistical methods and diagnostic tooling from my personal projects.</p>
     <div class="cred-box">
       <div class="cred-head">
-        <h3>Expert System Performance Analysis &amp; Optimization</h3>
-        <p>Identifying and fixing bottlenecks across application, database, and infrastructure layers in production systems. The tools support the analysis — they do not define it.</p>
+        <h3>Performance investigations and design notes</h3>
+        <p>The notes cover ingestion under load, tracing storage trade-offs and the statistical tests behind regression detection.</p>
       </div>
       <div class="tech-strip">
         <span class="tech-pre">Core stack</span>
-        <span class="t-chip">Java / C++</span>
+        <span class="t-chip">Go / Python / Java / C++</span>
         <span class="t-chip">JVM Internals</span>
         <span class="t-chip">Linux Kernel</span>
         <span class="t-chip">KVM / Hypervisors</span>
         <span class="t-chip">PostgreSQL</span>
         <span class="t-chip">Kubernetes</span>
         <span class="t-chip">Distributed Tracing</span>
-        <span class="t-chip soft">eBPF / XDP *</span>
+        <span class="t-chip soft">vLLM research</span>
       </div>
       <div class="check-box">
         <div class="check-item">System behaviour under load</div>
@@ -380,12 +381,18 @@ a{color:inherit;text-decoration:none}
         <div class="check-item">Root-cause analysis beyond surface metrics</div>
       </div>
       <div class="process-grid">
-        <div class="proc-step"><div class="proc-n">01 · Discovery</div><h4>Architecture Review</h4><p>Read-only access to monitoring logs and architecture docs. No production access required.</p></div>
-        <div class="proc-step"><div class="proc-n">02 · Analysis</div><h4>Bottleneck Identification</h4><p>Root causes in code, query plans, kernel config, and runtime — not just the dashboard.</p></div>
-        <div class="proc-step"><div class="proc-n">03 · Validation</div><h4>Load Test Verification</h4><p>Non-production load tests confirm findings before any changes touch production.</p></div>
-        <div class="proc-step"><div class="proc-n">04 · Roadmap</div><h4>Jira-Ready Output</h4><p>Prioritised, actionable fix list your team can start executing the same day.</p></div>
+        <div class="proc-step"><div class="proc-n">01 · Discovery</div><h4>Telemetry architecture</h4><p><a href="https://github.com/anshikapundeel/telemetryscale/blob/main/docs/ARCHITECTURE.md">Ingest design</a> and <a href="https://github.com/anshikapundeel/telemetryscale/tree/main/bench/results">local lab results</a> for throughput, cardinality and outage recovery.</p></div>
+        <div class="proc-step"><div class="proc-n">02 · Analysis</div><h4>Tracing storage</h4><p><a href="https://github.com/anshikapundeel/flow-trace/blob/main/docs/DESIGN.md">Flow Trace design notes</a> on sharding, retention and OTLP JSON.</p></div>
+        <div class="proc-step"><div class="proc-n">03 · Validation</div><h4>Regression statistics</h4><p><a href="https://github.com/anshikapundeel/regression-radar/blob/main/docs/STATISTICS.md">Statistical methods</a> behind distribution and tail-latency checks.</p></div>
+        <div class="proc-step"><div class="proc-n">04 · Roadmap</div><h4>Open-source activity</h4><p><a href="https://github.com/anshikapundeel">GitHub activity and public repositories</a>.</p></div>
       </div>
-      <div class="cred-foot">* eBPF/XDP — working familiarity, not production depth &nbsp;·&nbsp; 🔒 All work conducted securely and remotely</div>
+      <div class="cred-foot">
+        <strong>Public projects on GitHub</strong>
+        <p><strong>Observability and reliability</strong> · <a href="https://github.com/anshikapundeel/telemetryscale">telemetryscale</a> · <a href="https://github.com/anshikapundeel/incident-pilot">incident-pilot</a> · <a href="https://github.com/anshikapundeel/ai-ops-design">ai-ops-design</a> · <a href="https://github.com/anshikapundeel/flow-trace">flow-trace</a> · <a href="https://github.com/anshikapundeel/redfish-exporter">redfish-exporter</a> · <a href="https://github.com/anshikapundeel/slo-budget">slo-budget</a></p>
+        <p><strong>Linux and systems</strong> · <a href="https://github.com/anshikapundeel/linux-perf-toolkit">linux-perf-toolkit</a> · <a href="https://github.com/anshikapundeel/sched-trace">sched-trace</a> · <a href="https://github.com/anshikapundeel/perf-advisor">perf-advisor</a> · <a href="https://github.com/anshikapundeel/kvm-from-scratch">kvm-from-scratch</a> · <a href="https://github.com/anshikapundeel/pcp-allocator">pcp-allocator</a> · <a href="https://github.com/anshikapundeel/tcp-from-scratch">tcp-from-scratch</a></p>
+        <p><strong>Database and inference performance</strong> · <a href="https://github.com/anshikapundeel/pg-perf-toolkit">pg-perf-toolkit</a> · <a href="https://github.com/anshikapundeel/llm-perf-probe">llm-perf-probe</a> · <a href="https://github.com/anshikapundeel/regression-radar">regression-radar</a></p>
+        <p><strong>Deployment tooling</strong> · <a href="https://github.com/anshikapundeel/deploy-events">deploy-events</a> · <a href="https://github.com/anshikapundeel/deploy-risk">deploy-risk</a></p>
+      </div>
     </div>
   </div>
 </section>
@@ -396,9 +403,9 @@ a{color:inherit;text-decoration:none}
     <h2 class="section-h2">The engineer behind the work.</h2>
     <div class="identity-grid">
       <div>
-        <div class="identity-quote">"Dashboards show you the <em>what</em>. I work at the layer that explains the <em>why</em> — from the Kubernetes pod down to the kernel. That's where the real problems live."</div>
-        <p class="identity-p">I'm <strong>Anshika Pundeel</strong>, a performance engineer currently at IBM where I tune KVM on zServer mainframes — environments where a single kernel misconfiguration cascades across thousands of VMs. Before that at OpenText, I profiled and fixed Java applications running on Kubernetes in GCP — thread contention, mutex deadlocks, connection pool exhaustion, unaudited PostgreSQL query plans.</p>
-        <p class="identity-p"><strong>Most performance problems are misdiagnosed because engineers stop at the wrong layer.</strong> The application dashboard looks fine. The root cause is in the JVM scheduler, the NUMA topology, or a query plan nobody checked in two years. That's where I start.</p>
+        <div class="identity-quote">Performance engineering across <em>applications, databases and infrastructure</em>.</div>
+        <p class="identity-p"><strong>Anshika Pundeel</strong> is a Performance Engineer at Salesforce with 5 years of software engineering experience. Previously at IBM ISDL and OpenText.</p>
+        <p class="identity-p">Earlier work included KVM performance at IBM ISDL and profiling Java applications on Kubernetes at OpenText. Areas of focus include workload characterization, benchmarking, capacity analysis and regression detection.</p>
         <a href="https://www.linkedin.com/in/anshika-pundeel/" target="_blank" class="btn" style="margin-top:8px;display:inline-flex;background:#0A66C2;color:#fff;gap:8px;"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg> LinkedIn Profile</a>
       </div>
       <div class="id-card">
@@ -406,10 +413,10 @@ a{color:inherit;text-decoration:none}
         <div class="id-details">
           <div class="id-name">Anshika Pundeel</div>
           <div class="id-role">Performance Engineer</div>
-          <div class="id-row"><span class="id-row-k">Current</span><span class="id-row-v">IBM · KVM / zServer</span></div>
-          <div class="id-row"><span class="id-row-k">Previous</span><span class="id-row-v">OpenText · Java / K8s</span></div>
-          <div class="id-row"><span class="id-row-k">Location</span><span class="id-row-v">Bangalore · Remote</span></div>
-          <div class="id-row"><span class="id-row-k">Status</span><span class="id-row-v g">Available</span></div>
+          <div class="id-row"><span class="id-row-k">Current</span><span class="id-row-v">Salesforce</span></div>
+          <div class="id-row"><span class="id-row-k">Previous</span><span class="id-row-v">IBM ISDL · OpenText</span></div>
+          <div class="id-row"><span class="id-row-k">Experience</span><span class="id-row-v">5 years</span></div>
+          <div class="id-row"><span class="id-row-k">Focus</span><span class="id-row-v g">Systems &amp; performance</span></div>
         </div>
       </div>
     </div>
@@ -418,55 +425,55 @@ a{color:inherit;text-decoration:none}
 
 <section class="section" id="contact">
   <div class="wrap">
-    <div class="eyebrow">Engagements</div>
-    <h2 class="section-h2">Validate before growth exposes risk.</h2>
-    <p class="section-sub">Choose the level that matches where your system is and what you need to know.</p>
+    <div class="eyebrow">Professional contact</div>
+    <h2 class="section-h2">Connect with Anshika</h2>
+    <p class="section-sub">Get in touch about systems, infrastructure and performance engineering.</p>
     <div style="border:1.5px solid rgba(0,102,255,.25);border-radius:12px;background:var(--blue-dim);padding:32px 36px;margin-bottom:28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px">
   <div>
-    <div style="font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:8px">Free · No obligation</div>
-    <div style="font-size:20px;font-weight:800;color:var(--ink);letter-spacing:-.02em;margin-bottom:6px">30-Min Architecture Sanity Check</div>
-    <div style="font-size:14px;color:var(--body);max-width:480px;line-height:1.6">Not sure if you have a performance problem? I'll review what you share and tell you honestly if there's a real risk worth fixing. No pitch, no obligation.</div>
+    <div style="font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:8px">Professional profile</div>
+    <div style="font-size:20px;font-weight:800;color:var(--ink);letter-spacing:-.02em;margin-bottom:6px">LinkedIn</div>
+    <div style="font-size:14px;color:var(--body);max-width:480px;line-height:1.6">Connect with me or see my professional background.</div>
   </div>
-  <a href="https://calendly.com/anshikapundeel/30min" target="_blank" class="btn btn-blue" style="white-space:nowrap;flex-shrink:0">→ Book Free Call</a>
+  <a href="https://www.linkedin.com/in/anshika-pundeel/" target="_blank" class="btn btn-blue" style="white-space:nowrap;flex-shrink:0">View LinkedIn</a>
 </div>
     <div class="pricing-grid">
       <div class="price-card">
-        <div class="price-badge">Entry Point</div>
-        <h3>Quick Performance Review</h3>
-        <p>A focused review to surface visible risks and understand current performance quickly.</p>
+        <div class="price-badge">Source code</div>
+        <h3>GitHub</h3>
+        <p>Explore public engineering projects and their documentation.</p>
         <ul class="price-list">
-          <li>Initial Architecture Review</li>
-          <li>Visible Bottleneck Report</li>
-          <li>2-Hour Findings Call</li>
+          <li>Telemetry ingestion</li>
+          <li>Distributed tracing</li>
+          <li>Regression detection</li>
         </ul>
-        <a href="mailto:anshikapundeel@gmail.com?subject=Quick Performance Check" class="price-btn price-btn-outline">Check Readiness →</a>
+        <a href="https://github.com/anshikapundeel" class="price-btn price-btn-outline">Browse GitHub</a>
       </div>
       <div class="price-card star">
-        <div class="price-badge rec">Recommended</div>
-        <h3>Full Scalability Review</h3>
-        <p>Deep, engineering-led assessment of limits, risks, and SLA readiness. Most clients start here.</p>
+        <div class="price-badge rec">Engineering write-ups</div>
+        <h3>Case Studies</h3>
+        <p>Read the existing performance and incident-response case studies.</p>
         <ul class="price-list">
-          <li><strong>Full Architecture Analysis</strong></li>
-          <li>Database &amp; Query Optimisation</li>
-          <li>Load Testing Validation</li>
-          <li>Jira-Ready Remediation Roadmap</li>
+          <li><strong>Architecture and workload context</strong></li>
+          <li>Database and runtime analysis</li>
+          <li>Benchmark methodology</li>
+          <li>Engineering trade-offs</li>
         </ul>
-        <a href="mailto:anshikapundeel@gmail.com?subject=Full Scalability Review" class="price-btn price-btn-blue">Start Review →</a>
+        <a href="case-studies.html" class="price-btn price-btn-blue">Read Case Studies</a>
       </div>
       <div class="price-card">
-        <div class="price-badge">Advanced</div>
-        <h3>Custom Assessment</h3>
-        <p>For complex architectures, on-prem infra, mainframe environments, or regulatory constraints.</p>
+        <div class="price-badge">Contact</div>
+        <h3>Email</h3>
+        <p>Discuss roles and collaboration in systems engineering.</p>
         <ul class="price-list">
-          <li>Multi-Region Availability</li>
-          <li>Custom Chaos Engineering</li>
-          <li>On-prem / Hybrid / KVM</li>
-          <li>Mainframe Environments</li>
+          <li>Distributed systems</li>
+          <li>Cloud infrastructure</li>
+          <li>Linux and virtualization</li>
+          <li>Performance engineering</li>
         </ul>
-        <a href="mailto:anshikapundeel@gmail.com?subject=Custom Assessment" class="price-btn price-btn-outline">Get in Touch →</a>
+        <a href="mailto:anshikapundeel@gmail.com" class="price-btn price-btn-outline">Send Email</a>
       </div>
     </div>
-    <p class="secure">🔒 All work conducted securely and remotely &nbsp;·&nbsp; No production disruption &nbsp;·&nbsp; Confidentiality maintained</p>
+    <p class="secure">Anshika Pundeel · Systems, infrastructure and performance engineering</p>
   </div>
 </section>
 
@@ -486,10 +493,7 @@ a{color:inherit;text-decoration:none}
 
 <script>
 const cases=[
-  {name:"HIGH-TRAFFIC SAAS",    before:{lat:"1,840ms",cost:"Scaling up", rev:"Stagnant"}, after:{lat:"220ms",   cost:"Stable",   rev:"SLA met"  }},
-  {name:"FINTECH PLATFORM",     before:{lat:"Timeouts",cost:"Wasted",    rev:"Churn ↑" }, after:{lat:"Resolved",cost:"−30%",    rev:"Stable"   }},
-  {name:"ENTERPRISE INFRA",     before:{lat:"Spikes",  cost:"$$$",       rev:"Blocked" }, after:{lat:"Flat",    cost:"+30% VMs", rev:"Unlocked" }},
-  {name:"JAVA MICROSERVICES",   before:{lat:"GC Pause",cost:"High CPU",  rev:"Churn"   }, after:{lat:"Zero",    cost:"Low CPU",  rev:"Growth"   }}
+  {name:"18-SECOND TRIALS", before:{lat:"22,640",cost:"18,238",rev:"4,402"}, after:{lat:"36,000",cost:"25,960",rev:"10,040"}}
 ];
 let idx=0;
 const co=document.getElementById('wt-co');
@@ -499,13 +503,13 @@ const fill=document.getElementById('wf-fill'),stat=document.getElementById('wf-s
 function setCell(el,mEl,val,cls){el.textContent=val;el.className='wm-val '+cls;mEl.className='wm-cell '+(cls==='bad'?'bad-bg':cls==='gold'?'gold-bg':'good-bg')}
 function run(){
   const d=cases[idx];co.textContent=d.name;
-  setCell(vL,mL,d.before.lat,'bad');setCell(vC,mC,d.before.cost,'bad');setCell(vR,mR,d.before.rev,'bad');
+  setCell(vL,mL,d.before.lat,'gold');setCell(vC,mC,d.before.cost,'gold');setCell(vR,mR,d.before.rev,'gold');
   fill.style.width='6%';fill.style.background='#cc2200';
-  stat.textContent='⚠ Detecting bottleneck';stat.style.color='#cc2200';
+  stat.textContent='Block policy';stat.style.color='#cc2200';
   setTimeout(()=>{
     setCell(vL,mL,d.after.lat,'good');setCell(vC,mC,d.after.cost,'good');setCell(vR,mR,d.after.rev,'gold');
     fill.style.width='100%';fill.style.background='#00875a';
-    stat.textContent='✓ Root cause fixed';stat.style.color='#00875a';
+    stat.textContent='DropNewest policy';stat.style.color='#00875a';
   },2200);
   idx=(idx+1)%cases.length;
 }
